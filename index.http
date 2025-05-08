@@ -1,0 +1,329 @@
+### ===============================================================
+### ===============================================================
+### ===================== Práctica Intermedia =====================
+### ===============================================================
+### ===============================================================
+
+### Registro de usuario
+POST http://localhost:3000/api/user/register
+Content-Type: application/json
+
+{
+    "email": "testuser16@lushosa.com",
+    "password": "TestPassword123"
+}
+
+### Email test
+POST http://localhost:3000/api/mail
+Content-Type: application/json
+
+{
+    "subject": "Test Email",
+    "text": "This is a test email",
+    "to": "hackkill74@gmail.com",
+    "from": ""
+}
+
+### Validar email
+PUT http://localhost:3000/api/user/validatemail
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDExZDNhZjlmOTg5YmFjNGMwYzdiYSIsImVtYWlsIjoia2V5b3llcjgxM0BsdXNob3NhLmNvbSIsImlhdCI6MTc0NDkwMzQ4MywiZXhwIjoxNzQ0OTA3MDgzfQ.PkyXTCQIvD8-6kNKGbdAs4u9XS4FO0Dhw_U1CY0c-Uk
+Content-Type: application/json
+
+{
+    "code": "305091" 
+}
+
+### Login
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
+    "email": "testuser13@test.com",
+    "password": "TestPassword123"
+}
+
+### Actualizar datos personales
+PUT http://localhost:3000/api/user/personadata
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDExZDNhZjlmOTg5YmFjNGMwYzdiYSIsImVtYWlsIjoia2V5b3llcjgxM0BsdXNob3NhLmNvbSIsImlhdCI6MTc0NDkwMzQ4MywiZXhwIjoxNzQ0OTA3MDgzfQ.PkyXTCQIvD8-6kNKGbdAs4u9XS4FO0Dhw_U1CY0c-Uk
+
+{
+    "name": "Ivan",
+    "surname": "Guerrero",
+    "nif": "12345678P"
+}
+
+### Comprobar guardado datos persona (OBSOLETO)
+GET http://localhost:3000/api/user/persona
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTUxY2VmNDE4M2Y4NDUxZTBmMGY4ZCIsImVtYWlsIjoidGVzdHVzZXIxM0BnbWFpbC5jb20iLCJpYXQiOjE3NDMxMDE4NDYsImV4cCI6MTc0MzEwNTQ0Nn0.Ox-ipmTqzWmE0YZTtzLVKJDnLtafui7haDC0cOovxjc
+
+
+### Actualizar datos compañía
+PATCH http://localhost:3000/api/user/companydata
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDExZDNhZjlmOTg5YmFjNGMwYzdiYSIsImVtYWlsIjoia2V5b3llcjgxM0BsdXNob3NhLmNvbSIsImlhdCI6MTc0NDkwMzQ4MywiZXhwIjoxNzQ0OTA3MDgzfQ.PkyXTCQIvD8-6kNKGbdAs4u9XS4FO0Dhw_U1CY0c-Uk
+
+{
+    "companyName": "U-tad",
+    "cif": "A12345678",
+    "address": "Calle Prueba, 123",
+    "number": 123,
+    "postal": 28290,
+    "city": "Madrid",
+    "province": "Madrid"
+}
+
+### Subir logo a IPFS
+PATCH http://localhost:3000/api/user/logo HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTNkNjRjYWY5MDRhMmNjMmYzMTYwMSIsImVtYWlsIjoidGVzdHVzZXJAZ21haWwuY29tIiwiaWF0IjoxNzQzMTY1MjE2LCJleHAiOjE3NDMxNjg4MTZ9.dyM81Y2jk58jQZHQCQHoH8xulvbCRifR7dP4cHnKpXs
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="logo"; filename="fondo.jpg"
+Content-Type: image/jpg
+
+< C:\Users\theiv\Downloads\fondo.jpg
+--boundary123--
+
+### GetUser
+GET http://localhost:3000/api/user/getuser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTUxY2VmNDE4M2Y4NDUxZTBmMGY4ZCIsImVtYWlsIjoidGVzdHVzZXIxM0BnbWFpbC5jb20iLCJpYXQiOjE3NDMxMDE5MzAsImV4cCI6MTc0MzEwNTUzMH0.5lj3e2ctgCfkjIYvfdJLhQRaZ1sikBQn4wU4q1exlKQ
+
+### DeleteUser (soft)
+DELETE http://localhost:3000/api/user/deleteuser?soft=true
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTUxY2VmNDE4M2Y4NDUxZTBmMGY4ZCIsImVtYWlsIjoidGVzdHVzZXIxM0BnbWFpbC5jb20iLCJpYXQiOjE3NDMxMDIxMjMsImV4cCI6MTc0MzEwNTcyM30.m87N5gQtFXFYfEYE7EiQnPsIF1ft8yweNnpW5kSsFQM
+
+### DeleteUser (hard)
+DELETE http://localhost:3000/api/user/deleteuser?soft=false
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTVhMGZlM2ExZGRmZWYzMGEzMDZhNCIsImVtYWlsIjoidGVzdHVzZXIxNEBnbWFpbC5jb20iLCJpYXQiOjE3NDMxMDIzNzcsImV4cCI6MTc0MzEwNTk3N30.KqDd-FKAW35Zu8wxzCTVZqK9AE38A1j3w4LCqS2TaY4
+
+### Recuperar Password
+POST http://localhost:3000/api/user/forgotpassword
+Content-Type: application/json
+
+{
+    "email": "lihin57345@dizigg.com"
+}
+
+### Invitar Compañero
+POST http://localhost:3000/api/user/invite
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTUxMjMzNWE4M2JhYzIwNDE4MWJkMiIsImVtYWlsIjoidGVzdHVzZXIxMkBnbWFpbC5jb20iLCJpYXQiOjE3NDMxMDM4MzUsImV4cCI6MTc0MzEwNzQzNX0.CbeHbrNuw0j6yDR71dd-kN6NSLGnaXJ-gh-hTdpfGDg
+Content-Type: application/json
+
+{
+    "email": "defibal183@dizigg.com"
+}
+
+
+
+### ===============================================================
+### ===============================================================
+### ===================== Práctica Final ==========================
+### ======================== Clientes =============================
+### ===============================================================
+### ===============================================================
+### Práctica Final
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmY5NWExMjMzMjFlYzQ5NGZiNjM2NiIsImVtYWlsIjoidGVzdHVzZXIxM0B0ZXN0LmNvbSIsImlhdCI6MTc0NDkwNDU0MiwiZXhwIjoxNzQ0OTA4MTQyfQ.VEhqm0b6fbg4dq3dgRxTDU1I5TS3tLxaUMfuuO2ozkY
+### crear cliente
+POST http://localhost:3000/api/client/create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "AlbaranTest",
+  "cif": "D52921210",
+  "address": {
+    "street": "chile 2",
+    "number": 22,
+    "postal": 28290,
+    "city": "Las Rozas",
+    "province": "Madrid"
+  }
+}
+
+### mostrar todos los clientes
+GET http://localhost:3000/api/client/show
+Authorization: Bearer {{token}}
+
+### mostrar cliente específico
+GET http://localhost:3000/api/client/67fce3bbc848035b1b9bc89a
+Authorization: Bearer {{token}}
+
+### actualizar cliente
+PUT http://localhost:3000/api/client/67fce3bbc848035b1b9bc89a
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "JOSE",
+  "cif": "A12345679",
+  "address": {
+    "street": "Gran Vía",
+    "number": 12,
+    "postal": 28013,
+    "city": "Madrid",
+    "province": "Madrid"
+  }
+}
+
+### archivar cliente (soft delete)
+DELETE http://localhost:3000/api/client/archive/67fce3cbc848035b1b9bc89e
+Authorization: Bearer {{token}}
+
+### eliminar cliente (hard delete)
+DELETE http://localhost:3000/api/client/67fce45cc848035b1b9bc8a8
+Authorization: Bearer {{token}}
+
+### mostrar archivados
+GET http://localhost:3000/api/client/archived
+Authorization: Bearer {{token}}
+
+### restaurar cliente
+PATCH http://localhost:3000/api/client/restore/67fce3cbc848035b1b9bc89e
+Authorization: Bearer {{token}}
+
+
+### ===============================================================
+### ===============================================================
+### ===================== Práctica Final ==========================
+### ======================== Proyecto =============================
+### ===============================================================
+### ===============================================================
+### crear proyecto
+POST http://localhost:3000/api/project/create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Proyecto prueba Albaran",
+  "projectCode": "P3",
+  "email": "test3@proyecto.com",
+  "code": "003",
+  "clientId": "67ff95a123321ec494fb6366",
+  "address": {
+    "street": "Calle chile",
+    "number": 22,
+    "postal": 28730,
+    "city": "Las Matas",
+    "province": "Madrid"
+  },
+  "notes": "proyecto de prueba3"
+}   
+
+### mostrar lista proyectos
+GET http://localhost:3000/api/project/show
+Authorization: Bearer {{token}}
+
+### mostrar proyectos X cliente
+GET http://localhost:3000/api/project/show/67fce3bbc848035b1b9bc89a
+Authorization: Bearer {{token}}
+
+### mostrar X proyecto
+GET http://localhost:3000/api/project/show/67fce3bbc848035b1b9bc89a/67fd353ab15f04b169350e93
+Authorization: Bearer {{token}}
+
+### modificar X proyecto 
+PUT http://localhost:3000/api/project/modify/67fd353ab15f04b169350e93
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Proyecto actualizado",
+  "notes": "Modificado para pruebas",
+  "code": "101",
+  "email": "nuevo@proyecto.com"
+}
+
+### archivar un proyecto (soft delete)
+DELETE http://localhost:3000/api/project/archive/67fd353ab15f04b169350e93
+Authorization: Bearer {{token}}
+
+### mostar lista proyectos archivados
+GET http://localhost:3000/api/project/archived
+Authorization: Bearer {{token}}
+
+### mostar lista proyectos archivados de X cliente
+GET http://localhost:3000/api/project/archived/67fce3bbc848035b1b9bc89a
+Authorization: Bearer {{token}}
+
+### recuperar proyecto ya archivaddo
+PATCH http://localhost:3000/api/project/restore/67fd353ab15f04b169350e93
+Authorization: Bearer {{token}}
+
+### eliminar proyecto (hard delete)
+DELETE http://localhost:3000/api/project/delete/67fd353ab15f04b169350e93
+Authorization: Bearer {{token}}
+
+
+
+### ===============================================================
+### ===============================================================
+### ===================== Práctica Final ==========================
+### ======================== Albarans =============================
+### ===============================================================
+### ===============================================================
+### crear albaran (materiales)
+POST http://localhost:3000/api/albaran/create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "clientId": "67ff95a123321ec494fb6366",
+  "projectId": "67ff961023321ec494fb636c",
+  "format": "material",
+  "materials": ["cemento", "arena", "hierro"],
+  "description": "Materiales para la base",
+  "workdate": "2025-04-14"
+}
+
+### crear albaran (trabajadores)
+POST http://localhost:3000/api/albaran/create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "clientId": "67ff95a123321ec494fb6366",
+  "projectId": "67ff961023321ec494fb636c",
+  "format": "hours",
+  "workers": [
+    { "name": "Pepe2", "hours": 1 },
+    { "name": "Popo2", "hours": 2 }
+  ],
+  "description": "Testeo2",
+  "workdate": "2025-04-14"
+}
+
+### mostrar lista de albaranes
+GET http://localhost:3000/api/albaran/show
+Authorization: Bearer {{token}}
+
+### mostrar X albaran
+GET http://localhost:3000/api/albaran/show/67ff966d23321ec494fb6370
+Authorization: Bearer {{token}}
+
+### firmar albaran y generar PDF (subida a Pinata)
+POST http://localhost:3000/api/albaran/firmar/67ffad78b106c7ca8a52f7cb
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=boundary124
+
+--boundary124
+Content-Disposition: form-data; name="file"; filename="firma.jpg"
+Content-Type: image/jpg
+
+< C:\Users\Hackkill\Downloads\firma.jpg
+--boundary124--
+
+### descarga pdf
+### aqui VSCode te devuelve el cotnenido del pdf en hexadecimal
+### Tuve que descargar una extension del navegador para pasarle el token y acceder a la URL directamente
+### Me mostró el pdf correctamente
+GET http://localhost:3000/api/albaran/pdf/67ffad78b106c7ca8a52f7cb
+Authorization: Bearer {{token}}
+
+### eliminar albarán (solo si NO está firmado) (hard delete)
+DELETE http://localhost:3000/api/albaran/delete/67ffad78b106c7ca8a52f7cb
+Authorization: Bearer {{token}}
+
+### prueba slack
+GET http://localhost:3000/api/client/test-error
+Authorization: Bearer {{token}}
