@@ -1,3 +1,5 @@
+//serves as the main router configuration
+
 const express = require('express');
 const router = express.Router();
 
@@ -10,6 +12,6 @@ router.post('/mail', validatorMail, send)
 router.use('/user', authRoutes);
 router.use('/client', require('./client'));
 router.use('/project', require('./project'));
-router.use("/deliverynote", require("./DeliveryNote"));
+router.use("/deliverynote", require("./deliveryNote"));
 
 module.exports = router;

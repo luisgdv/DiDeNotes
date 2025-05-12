@@ -1,3 +1,5 @@
+//defines all authentication and user-related routes in the application.
+
 const express = require('express');
 const { registerUser, validateEmail, loginUser } = require('../controllers/auth');
 const { validateRegister, validateLogin } = require('../validators/auth');

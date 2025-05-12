@@ -1,3 +1,4 @@
+// Handles client-side validation errors and formats error responses
 const { validationResult } = require("express-validator");
 
 const handleClientError = (req, res) => {

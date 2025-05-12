@@ -1,3 +1,5 @@
+// Validates 6-digit verification codes
+// Ensures numeric format and exact length
 const { body } = require('express-validator');
 const validateResults = require('../utils/handleValidator');
 

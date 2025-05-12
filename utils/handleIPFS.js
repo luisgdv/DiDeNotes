@@ -1,3 +1,5 @@
+// Manages file uploads and retrievals from IPFS network using Pinata service
+// Provides methods for pinning files and getting IPFS hashes
 const pinataUrl="https://api.pinata.cloud/pinning/pinFileToIPFS";
  const uploadToPinata = async (fileBuffer, fileName) => {
  

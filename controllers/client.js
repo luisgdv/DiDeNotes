@@ -1,3 +1,4 @@
+//controller file that manages all client-related operations
 const Client = require("../models/client");
 const handleClientError = require("../utils/handleClientError");
 

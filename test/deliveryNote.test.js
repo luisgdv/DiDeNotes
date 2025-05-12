@@ -1,3 +1,4 @@
+//detailed test suite for the delivery note
 const supertest = require('supertest');
 const { app, server } = require('../app.js');
 const mongoose = require('mongoose');
@@ -28,8 +29,8 @@ async function setupUserClientProjectDeliveryNote(email) {
       street: 'Test Street',
       number: 1,
       postal: 28000,
-      city: 'Madrid',
-      province: 'Madrid'
+      city: 'Jeréz',
+      province: 'Andalucía'
     },
     userId: user._id
   });

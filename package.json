@@ -1,7 +1,7 @@
 {
-  "name": "webservidor_intermedia25",
+  "name": "DiDeNotes",
   "version": "1.0.0",
-  "description": "",
+  "description": "Delivery Notes Management System",
   "main": "app.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit",
@@ -10,16 +10,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IvanGuerreroFdez/WebServidor_Intermedia25.git"
+    "url": "git+https://github.com/luisgdv/DiDeNotes.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "delivery",
+    "notes",
+    "management",
+    "api"
+  ],
+  "author": "Luis Gracia de Vargas",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/IvanGuerreroFdez/WebServidor_Intermedia25/issues"
+    "url": "https://github.com/luisgdv/DiDeNotes/issues"
   },
-  "homepage": "https://github.com/IvanGuerreroFdez/WebServidor_Intermedia25#readme",
+  "homepage": "https://github.com/luisgdv/DiDeNotes#readme",
   "dependencies": {
     "@slack/webhook": "^7.0.5",
     "axios": "^1.8.4",

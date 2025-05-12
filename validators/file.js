@@ -1,3 +1,5 @@
+// Validates file uploads for signatures
+// Ensures correct file types (JPG, JPEG, PNG)
 const { check } = require("express-validator");
 const  validateResults  = require("../utils/handleValidator");
 

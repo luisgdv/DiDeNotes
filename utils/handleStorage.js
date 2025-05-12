@@ -1,3 +1,4 @@
+// Manages file storage configuration using multer for both memory and disk storage
 const multer=require('multer')
  
  const memory = multer.memoryStorage()

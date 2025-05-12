@@ -1,3 +1,5 @@
+//controller that manages project-related operations
+//organizes client work, maintaining relationships between users, companies, and clients.
 const Project = require("../models/project");
 const Client = require("../models/client");
 

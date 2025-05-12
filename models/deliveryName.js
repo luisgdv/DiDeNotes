@@ -1,3 +1,4 @@
+// defines a Mongoose schema for delivery notes in the projefct
 const mongoose = require("mongoose");
 
 const deliveryNoteSchema = new mongoose.Schema({

@@ -1,3 +1,5 @@
+// Validates project creation and updates
+// Ensures required fields: name, codes, client ID, address
 const { check } = require("express-validator");
 const validateResults = require("../utils/handleValidator");
 

@@ -1,3 +1,4 @@
+//contains extensive test cases for the client management functionality.
 const supertest = require('supertest');
 const { app, server } = require('../app.js');
 const mongoose = require('mongoose');
@@ -7,12 +8,13 @@ const usersModel = require('../models/users.js');
 const clientsModel = require('../models/client.js');
 const api = supertest(app);
 
-// Validar y registrar usuario
+// Register and validate user
 async function registerAndVerifyUser(email) {
   const reg = await api.post('/api/user/register').send({ email, password: 'Test1234' });
   const token = reg.body.token;
   const user = await usersModel.findById(reg.body.user._id);
   await api
+
     .put('/api/user/validatemail')
     .auth(token, { type: 'bearer' })
     .send({ code: user.verificationCode })
@@ -20,11 +22,13 @@ async function registerAndVerifyUser(email) {
   return token;
 }
 
+
 beforeAll(async () => {
   await new Promise((resolve) => mongoose.connection.once('connected', resolve));
   await usersModel.deleteMany({});
   await clientsModel.deleteMany({});
 });
+
 
 describe('Client', () => {
   it('client has been created succesfully', async () => {
@@ -93,6 +97,7 @@ describe('Client', () => {
     expect(res.body.length).toBeGreaterThan(0);
   });
 
+  
   it('client by Id', async () => {
     const token = await registerAndVerifyUser('client4@test.com');
 
@@ -167,8 +172,10 @@ describe('Client', () => {
     expect(res.body.name).toBe('updated client');
   });
 
+
   it('update unexistent client', async () => {
     const token = await registerAndVerifyUser('update404@test.com');
+
 
     await api
       .put(`/api/client/999999999999999999999999`)
@@ -187,7 +194,9 @@ describe('Client', () => {
       .expect(404);
   });
 
+
   it('Update client with invalid data (missing address)', async () => {
+
     const token = await registerAndVerifyUser('client6@test.com');
 
     const create = await api.post('/api/client/create')
@@ -213,10 +222,13 @@ describe('Client', () => {
       .expect(422);
   });
 
-  it('Archive client (soft delete)', async () => {
-    const token = await registerAndVerifyUser('client7@test.com');
 
+  it('Archive client (soft delete)', async () => {
+
+    const token = await registerAndVerifyUser('client7@test.com');
     const create = await api.post('/api/client/create')
+
+
       .auth(token, { type: 'bearer' })
       .send({
         name: 'Archivable Client',
@@ -251,8 +263,9 @@ describe('Client', () => {
 
   it('Get archived clients', async () => {
     const token = await registerAndVerifyUser('client8@test.com');
-
     await api.post('/api/client/create')
+
+
       .auth(token, { type: 'bearer' })
       .send({
         name: 'Archived Client',
@@ -280,8 +293,9 @@ describe('Client', () => {
 
   it('Restore archived client', async () => {
     const token = await registerAndVerifyUser('client9@test.com');
-
     const create = await api.post('/api/client/create')
+
+    
       .auth(token, { type: 'bearer' })
       .send({
         name: 'Restore Client',

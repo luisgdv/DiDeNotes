@@ -1,9 +1,9 @@
+//comprehensive test suite for user onboarding functionality
 const supertest = require('supertest');
 const mongoose = require('mongoose');
 const { app, server } = require('../app');
 const usersModel = require('../models/users');
 const path = require('path');
-
 const api = supertest(app);
 
 // Register and verify user
@@ -61,7 +61,6 @@ describe('Onboarding', () => {
   it('Validate email correctly', async () => {
     await registerAndVerifyUser('user4@test.com');
   });
-
   it('Failed email validation (no code)', async () => {
     const reg = await api.post('/api/user/register').send({ email: 'user5@test.com', password: 'Test1234' });
     const token = reg.body.token;
@@ -87,6 +86,7 @@ describe('Onboarding', () => {
   it('Successful login', async () => {
     await api.post('/api/user/register').send({ email: 'user7@test.com', password: 'Test1234' });
     const res = await api
+
       .post('/api/user/login')
       .send({ email: 'user7@test.com', password: 'Test1234' })
       .expect(200);
@@ -154,6 +154,7 @@ describe('Onboarding', () => {
   it('Update company data correctly', async () => {
     const token = await registerAndVerifyUser('user12@test.com');
 
+
     await api
       .patch('/api/user/companydata')
       .auth(token, { type: 'bearer' })
@@ -169,6 +170,7 @@ describe('Onboarding', () => {
       .expect(200);
   });
 
+  
   it('Update company data (without cif)', async () => {
     const token = await registerAndVerifyUser('user13@test.com');
 

@@ -1,3 +1,5 @@
+// Validates delivery note creation
+// Handles both material and hours formats with specific requirements
 const { check } = require("express-validator");
 const validateResults = require("../utils/handleValidator");
 

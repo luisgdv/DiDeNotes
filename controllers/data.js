@@ -1,3 +1,5 @@
+//controller that manages user personal and company data updates
+
 const User = require('../models/users');
 //const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
@@ -16,7 +18,7 @@ exports.DataPersona = async (req, res) => {
         console.log("User:", user);
 
         if (!user) {
-            return res.status(404).json({ message: 'Usuario not found' });
+            return res.status(404).json({ message: 'User not found' });
         }
 
         user.persona.name = name || user.persona.name;

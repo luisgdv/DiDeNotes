@@ -1,3 +1,5 @@
+// Validates personal and company data
+// Handles NIF validation and Spanish postal codes
 const { check } = require("express-validator");
 const validateResults = require("../utils/handleValidator");
 

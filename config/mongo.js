@@ -1,3 +1,4 @@
+// mongo db connecting
 const mongoose = require('mongoose')
 
 const dbConnect = () => {

@@ -1,3 +1,4 @@
+//client structure for our  mongodb client model
 const mongoose = require("mongoose");
 
 const clientSchema = new mongoose.Schema({

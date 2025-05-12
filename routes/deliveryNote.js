@@ -1,3 +1,4 @@
+//  defines a comprehensive set of routes for managing delivery notes
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verificationToken");
@@ -193,5 +194,4 @@ router.delete("/delete/:id", verifyToken, deleteDeliveryNote);
  *         description: Invalid file
  */
 router.post("/sign/:id", verifyToken, uploadMiddlewareMemory.single("file"), validateSignatureUpload, signDeliveryNote);
-
 module.exports = router;

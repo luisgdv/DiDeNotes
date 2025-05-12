@@ -1,3 +1,4 @@
+//configures  Swagger/OpenAPI documentation for Express API.
 const swaggerJsdoc = require("swagger-jsdoc")
 
 const options = {
@@ -7,7 +8,7 @@ const options = {
         title: "Tracks - Express API with Swagger (OpenAPI 3.0)",
         version: "0.1.0",
         description:
-          "This is a CRUD API application made with Express and documented with Swagger",
+          "This is a CRUD API application made with Express and docced with Swagger",
         license: {
           name: "MIT",
           url: "https://spdx.org/licenses/MIT.html",
@@ -15,7 +16,7 @@ const options = {
         contact: {
           name: "u-tad",
           url: "https://u-tad.com",
-          email: "ricardo.palacios@u-tad.com",
+          email: "manolo.olonam@u-tad.com",
         },
       },
       servers: [
@@ -37,15 +38,15 @@ const options = {
                 properties: {
                     name: {
                         type: "string",
-                        example: "Menganito"
+                        example: "Mario"
                     },
                     age: {
                         type: "integer",
-                        example: 20
+                        example: 30
                     },
                     email: {
                         type: "string",
-                        example: "myemail@google.com"
+                        example: "emailer@google.com"
                     },
                     password: {
                         type: "string"
@@ -58,7 +59,7 @@ const options = {
                 properties: {
                   email: {
                     type: "string",
-                    example: "myemail@google.com"
+                    example: "emailer2@google.com"
                   },
                 password: {
                     type: "string"

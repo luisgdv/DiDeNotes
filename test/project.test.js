@@ -1,3 +1,4 @@
+//test suite for project management functionality
 const supertest = require('supertest');
 const { app, server } = require('../app.js');
 const mongoose = require('mongoose');

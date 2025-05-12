@@ -1,3 +1,4 @@
+// defines a comprehensive set of routes for client management  
 const express = require("express");
 const router = express.Router();
 const {createClient, getClients, getArchivedClients, getClientById, updateClient, deleteClient, archiveClient, restoreClient} = require("../controllers/client");
@@ -8,7 +9,7 @@ const { clientValidator } = require("../validators/client");
  * @swagger
  * /api/client/create:
  *   post:
- *     summary: Crea un nuevo cliente
+ *     summary: Create a new client
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
@@ -39,13 +40,13 @@ const { clientValidator } = require("../validators/client");
  *                     type: string
  *     responses:
  *       200:
- *         description: Cliente creado con éxito
+ *         description: Client created successfully
  *       400:
- *         description: Ya existe un cliente con ese nombre
+ *         description: A client with this name already exists
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       422:
- *         description: Error de validación de campos
+ *         description: Field validation error
  */
 router.post("/create", verifyToken, clientValidator, createClient);
 
@@ -53,15 +54,15 @@ router.post("/create", verifyToken, clientValidator, createClient);
  * @swagger
  * /api/client/show:
  *   get:
- *     summary: Obtener todos los clientes del usuario o su empresa
+ *     summary: Get all clients for the user or their company
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Lista de clientes
+ *         description: List of clients
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/show", verifyToken, getClients);
 
@@ -69,15 +70,15 @@ router.get("/show", verifyToken, getClients);
  * @swagger
  * /api/client/archived:
  *   get:
- *     summary: Obtener los clientes archivados del usuario
+ *     summary: Get archived clients for the user
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Lista de clientes archivados
+ *         description: List of archived clients
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/archived", verifyToken, getArchivedClients);
 
@@ -85,7 +86,7 @@ router.get("/archived", verifyToken, getArchivedClients);
  * @swagger
  * /api/client/{id}:
  *   get:
- *     summary: Obtener un cliente por ID
+ *     summary: Get a client by ID
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
@@ -97,13 +98,13 @@ router.get("/archived", verifyToken, getArchivedClients);
  *           type: string
  *     responses:
  *       200:
- *         description: Cliente encontrado
+ *         description: Client found
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       403:
- *         description: No tienes permisos sobre este cliente
+ *         description: You don't have permission for this client
  *       404:
- *         description: Cliente no encontrado
+ *         description: Client not found
  */
 router.get("/:id", verifyToken, getClientById);
 
@@ -111,7 +112,7 @@ router.get("/:id", verifyToken, getClientById);
  * @swagger
  * /api/client/{id}:
  *   put:
- *     summary: Actualizar cliente
+ *     summary: Update client
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
@@ -147,15 +148,15 @@ router.get("/:id", verifyToken, getClientById);
  *                     type: string
  *     responses:
  *       200:
- *         description: Cliente actualizado
+ *         description: Client updated
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       403:
- *         description: No tienes permisos para actualizar este cliente
+ *         description: You don't have permission to update this client
  *       404:
- *         description: Cliente no encontrado
+ *         description: Client not found
  *       422:
- *         description: Error de validación de campos
+ *         description: Field validation error
  */
 router.put("/:id", verifyToken, clientValidator, updateClient);
 
@@ -163,7 +164,7 @@ router.put("/:id", verifyToken, clientValidator, updateClient);
  * @swagger
  * /api/client/{id}:
  *   delete:
- *     summary: Eliminar cliente permanentemente (hard delete)
+ *     summary: Permanently delete client
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
@@ -175,13 +176,13 @@ router.put("/:id", verifyToken, clientValidator, updateClient);
  *           type: string
  *     responses:
  *       200:
- *         description: Cliente eliminado
+ *         description: Client deleted
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       403:
- *         description: No tienes permisos para borrar este cliente
+ *         description: You don't have permission to delete this client
  *       404:
- *         description: Cliente no encontrado
+ *         description: Client not found
  */
 router.delete("/:id", verifyToken, deleteClient);
 
@@ -189,7 +190,7 @@ router.delete("/:id", verifyToken, deleteClient);
  * @swagger
  * /api/client/archive/{id}:
  *   delete:
- *     summary: Archivar cliente (soft delete)
+ *     summary: Archive client (soft delete)
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
@@ -201,21 +202,20 @@ router.delete("/:id", verifyToken, deleteClient);
  *           type: string
  *     responses:
  *       200:
- *         description: Cliente archivado
+ *         description: Client archived
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       403:
- *         description: No tienes permisos para archivar este cliente
+ *         description: You don't have permission to archive this client
  *       404:
- *         description: Cliente no encontrado
+ *         description: Client not found
  */
 router.delete("/archive/:id", verifyToken, archiveClient);
-
 /**
  * @swagger
  * /api/client/restore/{id}:
  *   patch:
- *     summary: Restaurar cliente archivado
+ *     summary: Restore archived client
  *     tags: [Clients]
  *     security:
  *       - bearerAuth: []
@@ -227,19 +227,17 @@ router.delete("/archive/:id", verifyToken, archiveClient);
  *           type: string
  *     responses:
  *       200:
- *         description: Cliente restaurado
+ *         description: Client restored
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       403:
- *         description: No tienes permisos para restaurar este cliente
+ *         description: You don't have permission to restore this client
  *       404:
- *         description: Cliente no encontrado
+ *         description: Client not found
  */
 router.patch("/restore/:id", verifyToken, restoreClient);
-
-//pruebas Slack
+//Slack tests
 router.get('/test-error', (req, res) => {
     throw new Error('forced error to test Slack notification');
 });
-
 module.exports = router;

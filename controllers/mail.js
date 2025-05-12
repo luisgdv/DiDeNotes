@@ -1,3 +1,4 @@
+//handles email sending functionality
 const { sendEmail } = require('../utils/handleEmail')
 const { handleHttpError } = require('../utils/handleError')
 const { matchedData } = require('express-validator')

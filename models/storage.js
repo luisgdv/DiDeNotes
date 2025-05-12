@@ -1,3 +1,4 @@
+//Mongoose schema for storing file information
 const mongoose = require("mongoose")
 //const mongooseDelete = require("mongoose-delete")
 

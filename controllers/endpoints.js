@@ -1,3 +1,5 @@
+//controller that manages various user-related endpoints
+
 const User = require('../models/users');
 const { sendEmail } = require('../utils/handleEmail');
 const { generateToken } = require('../utils/handleJwt');
@@ -90,7 +92,7 @@ exports.inviteUser = async (req, res) => {
 
         const invitedUser = await User.create({
             email,
-            role: 'Jhon', 
+            role: 'Jhon Doe', 
             password: 'user1234',
         });
 

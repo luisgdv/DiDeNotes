@@ -1,4 +1,5 @@
-require("dotenv").config();
+// Manages email functionality using Gmail OAuth2 and nodemailer for sending emails
+çrequire("dotenv").config();
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;

@@ -1,3 +1,6 @@
+//middleware that handles JWT (JSON Web Token) authentication
+//to protect  routes
+
 const jwt = require('jsonwebtoken');
 
 const authenticate = (req, res, next) => {

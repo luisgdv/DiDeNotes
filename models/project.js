@@ -1,3 +1,4 @@
+// Mongoose schema for projects in your application
 const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({

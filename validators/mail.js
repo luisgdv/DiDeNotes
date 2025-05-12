@@ -1,3 +1,5 @@
+// Validates email sending requirements
+// Checks subject, text, sender, and recipient
 const { check } = require("express-validator");
 const validateResults = require("../utils/handleValidator");
 

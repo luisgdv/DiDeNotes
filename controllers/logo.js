@@ -1,3 +1,4 @@
+//controller that manages company logo image uploads
 const StorageModel = require('../models/storage.js')
 const {uploadToPinata} = require('../utils/handleIPFS.js')
 const uploadImage = async (req, res) => {

@@ -1,3 +1,4 @@
+//controller that manages delivery notes
 const DeliveryNote = require("../models/deliveryNote");
 const Storage = require("../models/storage");
 const { uploadToPinata } = require("../utils/handleIPFS");

@@ -1,3 +1,4 @@
+// Implements Slack webhook integration for application logging and monitoring
 const { IncomingWebhook } = require("@slack/webhook");
 const webHook = new IncomingWebhook(process.env.SLACK_WEBHOOK);
 

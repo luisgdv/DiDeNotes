@@ -1,3 +1,4 @@
+//defines a comprehensive set of RESTful routes
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verificationToken");
@@ -8,7 +9,7 @@ const { projectValidator } = require("../validators/projects");
  * @swagger
  * /api/project/create:
  *   post:
- *     summary: Crear un proyecto
+ *     summary: Create a project
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -47,13 +48,13 @@ const { projectValidator } = require("../validators/projects");
  *                     type: string
  *     responses:
  *       200:
- *         description: Proyecto creado con éxito
+ *         description: Project created successfully
  *       400:
- *         description: Ya existe un proyecto con ese nombre
+ *         description: A project with this name already exists
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       422:
- *         description: Error de validación de campos
+ *         description: Field validation error
  */
 router.post("/create", verifyToken, projectValidator,createProject);
 
@@ -61,7 +62,7 @@ router.post("/create", verifyToken, projectValidator,createProject);
  * @swagger
  * /api/project/modify/{id}:
  *   put:
- *     summary: Modificar un proyecto
+ *     summary: Modify a project
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -105,15 +106,15 @@ router.post("/create", verifyToken, projectValidator,createProject);
  *                     type: string
  *     responses:
  *       200:
- *         description: Proyecto actualizado
+ *         description: Project updated
  *       400:
- *         description: Proyecto no encontrado
+ *         description: Project not found
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  *       403:
- *         description: No tienes permisos para modificar este proyecto
+ *         description: You don't have permission to modify this project
  *       422:
- *         description: Error de validación de campos
+ *         description: Field validation error
  */
 router.put("/modify/:id", verifyToken, projectValidator,updateProject);
 
@@ -121,15 +122,15 @@ router.put("/modify/:id", verifyToken, projectValidator,updateProject);
  * @swagger
  * /api/project/show:
  *   get:
- *     summary: Obtener todos los proyectos
+ *     summary: Get all projects
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Proyectos obtenidos con éxito
+ *         description: Projects retrieved successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/show", verifyToken, getAllProjects);
 
@@ -137,7 +138,7 @@ router.get("/show", verifyToken, getAllProjects);
  * @swagger
  * /api/project/show/{client}:
  *   get:
- *     summary: Obtener proyectos por cliente
+ *     summary: Get projects by client
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -149,9 +150,9 @@ router.get("/show", verifyToken, getAllProjects);
  *           type: string
  *     responses:
  *       200:
- *         description: Proyectos obtenidos con éxito
+ *         description: Projects retrieved successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/show/:client", verifyToken, getProjectsByClient);
 
@@ -159,7 +160,7 @@ router.get("/show/:client", verifyToken, getProjectsByClient);
  * @swagger
  * /api/project/show/{client}/{id}:
  *   get:
- *     summary: Obtener un proyecto por cliente e ID
+ *     summary: Get a project by client and ID
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -176,9 +177,9 @@ router.get("/show/:client", verifyToken, getProjectsByClient);
  *           type: string
  *     responses:
  *       200:
- *         description: Proyecto obtenido con éxito
+ *         description: Project retrieved successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/show/:client/:id", verifyToken, getProjectByClientAndId);
 
@@ -186,15 +187,15 @@ router.get("/show/:client/:id", verifyToken, getProjectByClientAndId);
  * @swagger
  * /api/project/archived:
  *   get:
- *     summary: Obtener proyectos archivados
+ *     summary: Get archived projects
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Proyectos archivados obtenidos con éxito
+ *         description: Archived projects retrieved successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/archived", verifyToken, getArchivedProjects);
 
@@ -202,7 +203,7 @@ router.get("/archived", verifyToken, getArchivedProjects);
  * @swagger
  * /api/project/archived/{client}:
  *   get:
- *     summary: Obtener proyectos archivados por cliente
+ *     summary: Get archived projects by client
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -214,9 +215,9 @@ router.get("/archived", verifyToken, getArchivedProjects);
  *           type: string
  *     responses:
  *       200:
- *         description: Proyectos archivados obtenidos con éxito
+ *         description: Archived projects retrieved successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.get("/archived/:client", verifyToken, getArchivedByClient);
 
@@ -224,7 +225,7 @@ router.get("/archived/:client", verifyToken, getArchivedByClient);
  * @swagger
  * /api/project/delete/{id}:
  *   delete:
- *     summary: Eliminar un proyecto
+ *     summary: Delete a project
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -236,9 +237,9 @@ router.get("/archived/:client", verifyToken, getArchivedByClient);
  *           type: string
  *     responses:
  *       200:
- *         description: Proyecto eliminado con éxito
+ *         description: Project deleted successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.delete("/delete/:id", verifyToken, deleteProject);
 
@@ -246,7 +247,7 @@ router.delete("/delete/:id", verifyToken, deleteProject);
  * @swagger
  * /api/project/archive/{id}:
  *   delete:
- *     summary: Archivar un proyecto
+ *     summary: Archive a project
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -258,9 +259,9 @@ router.delete("/delete/:id", verifyToken, deleteProject);
  *           type: string
  *     responses:
  *       200:
- *         description: Proyecto archivado con éxito
+ *         description: Project archived successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.delete("/archive/:id", verifyToken, archiveProject);
 
@@ -268,7 +269,7 @@ router.delete("/archive/:id", verifyToken, archiveProject);
  * @swagger
  * /api/project/restore/{id}:
  *   patch:
- *     summary: Restaurar un proyecto archivado
+ *     summary: Restore an archived project
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
@@ -280,9 +281,9 @@ router.delete("/archive/:id", verifyToken, archiveProject);
  *           type: string
  *     responses:
  *       200:
- *         description: Proyecto restaurado con éxito
+ *         description: Project restored successfully
  *       401:
- *         description: Token no proporcionado o inválido
+ *         description: Token not provided or invalid
  */
 router.patch("/restore/:id", verifyToken, restoreProject);
 

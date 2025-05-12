@@ -1,3 +1,5 @@
+// Validates client creation and updates
+// Checks required fields: name, CIF, and complete address
 const { check } = require("express-validator");
 const validateResults = require("../utils/handleValidator");
 
